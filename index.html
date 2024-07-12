@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Forum</title>
+    <title>Delta Forums</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Welcome to the Simple Forum</h1>
-        <marquee>Welcome to our retro forum! Post your thoughts and replies!</marquee>
+        <h1>Delta Forums</h1>
+        <marquee>Bienvenido/a A Delta Forums, Publica y discute aqui!</marquee>
     </header>
     <div class="container">
         <nav class="sidebar">
@@ -21,32 +21,32 @@
         </nav>
         <main>
             <section id="username-section">
-                <h2>Enter Your Username</h2>
+                <h2>Escribe tu Username</h2>
                 <form id="username-form">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
-                    <button type="submit">Set Username</button>
+                    <button type="submit">Listo</button>
                 </form>
             </section>
             <section id="account-settings" style="display: none;">
                 <h2>Account Settings</h2>
                 <form id="change-username-form">
-                    <label for="new-username">Change Username:</label>
+                    <label for="new-username">Cambiar Username:</label>
                     <input type="text" id="new-username" name="new-username" required>
-                    <button type="submit">Change Username</button>
+                    <button type="submit">Cambiar</button>
                 </form>
-                <button id="logout-button">Log Out</button>
+                <button id="logout-button">Cerrar Sesion</button>
             </section>
             <section id="new-post" style="display: none;">
-                <h2>Create a New Post</h2>
+                <h2>Crear nuevo post</h2>
                 <form id="post-form">
-                    <label for="post-title">Title:</label>
+                    <label for="post-title">Titulo:</label>
                     <input type="text" id="post-title" name="post-title" required>
                     
-                    <label for="post-content">Content:</label>
+                    <label for="post-content">Descripcion:</label>
                     <textarea id="post-content" name="post-content" required></textarea>
                     
-                    <button type="submit">Submit</button>
+                    <button type="submit">Publicar</button>
                 </form>
             </section>
             <section id="posts" style="display: none;">
@@ -55,7 +55,7 @@
             </section>
             <section id="servers" style="display: none;">
                 <h2>Servers</h2>
-                <p>Server list will be displayed here.</p>
+                <p>Garry's Mod: 45.61.170.67:27021</p>
             </section>
         </main>
     </div>
