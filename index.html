@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Simple Forum</h1>
+        <marquee>Welcome to our retro forum! Post your thoughts and replies!</marquee>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#" id="posts-link">Posts</a></li>
+                <li><a href="#" id="servers-link">Servers</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="username-section">
+                <h2>Enter Your Username</h2>
+                <form id="username-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <button type="submit">Set Username</button>
+                </form>
+            </section>
+            <section id="account-settings" style="display: none;">
+                <h2>Account Settings</h2>
+                <form id="change-username-form">
+                    <label for="new-username">Change Username:</label>
+                    <input type="text" id="new-username" name="new-username" required>
+                    <button type="submit">Change Username</button>
+                </form>
+                <button id="logout-button">Log Out</button>
+            </section>
+            <section id="new-post" style="display: none;">
+                <h2>Create a New Post</h2>
+                <form id="post-form">
+                    <label for="post-title">Title:</label>
+                    <input type="text" id="post-title" name="post-title" required>
+                    
+                    <label for="post-content">Content:</label>
+                    <textarea id="post-content" name="post-content" required></textarea>
+                    
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+            <section id="posts" style="display: none;">
+                <h2>Posts</h2>
+                <!-- Posts will be dynamically added here -->
+            </section>
+            <section id="servers" style="display: none;">
+                <h2>Servers</h2>
+                <p>Server list will be displayed here.</p>
+            </section>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

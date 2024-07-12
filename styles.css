@@ -1,0 +1,46 @@
+body {
+    font-family: 'Times New Roman', cursive;
+    background-image: url('https://i.imgur.com/2pgYJCr.jpeg'); /* Replace with the path to your image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Keep the image fixed in place */
+    color: #333; /* Text color */
+}
+
+header, main, section {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional button styles */
+button {
+    font-family: 'Times New Roman', cursive;
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 12px;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+.reply button {
+    margin-right: 0;
+}
+
+/* Additional styles */
+.post, .reply {
+    background-color: rgba(255, 255, 255, 3); /* Semi-transparent background for readability */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
