@@ -15,24 +15,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let username = '';
 
-    // Load posts from localStorage
+    // Load posts from the server
     const loadPosts = () => {
-        const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
-        savedPosts.forEach(post => {
-            displayPost(post.title, post.content, post.replies);
-        });
+        fetch('http://localhost:3000/posts')
+            .then(response => response.json())
+            .then(posts => {
+                postsSection.innerHTML = '<h2>Posts</h2>'; // Clear the section
+                posts.forEach(post => {
+                    displayPost(post.title, post.content, post.replies);
+                });
+            });
     };
 
-    // Save posts to localStorage
-    const savePosts = () => {
-        const posts = Array.from(document.querySelectorAll('.post')).map(post => {
-            return {
-                title: post.querySelector('.post-header').textContent.split(': ')[1],
-                content: post.querySelector('p').textContent,
-                replies: Array.from(post.querySelectorAll('.reply')).map(reply => reply.querySelector('p').textContent)
-            };
-        });
-        localStorage.setItem('posts', JSON.stringify(posts));
+    // Polling to check for new posts every 5 seconds
+    setInterval(loadPosts, 5000);
+
+    // Save a new post to the server
+    const savePost = (post) => {
+        fetch('http://localhost:3000/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(post)
+        }).then(response => response.json())
+          .then(() => loadPosts()); // Reload posts after saving
+    };
+
+    // Delete a post from the server
+    const deletePost = (title) => {
+        fetch(`http://localhost:3000/posts/${title}`, {
+            method: 'DELETE'
+        }).then(() => loadPosts()); // Reload posts after deleting
     };
 
     // Display a single post
@@ -50,8 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete Post';
         deleteButton.addEventListener('click', function() {
-            postsSection.removeChild(postDiv);
-            savePosts();
+            deletePost(title);
         });
 
         const replyForm = document.createElement('form');
@@ -83,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             replyForm.reset();
 
             // Save posts after adding a new reply
-            savePosts();
         });
 
         postDiv.appendChild(postHeader);
@@ -143,11 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const postTitle = document.getElementById('post-title').value;
         const postContent = document.getElementById('post-content').value;
 
-        // Display the new post
-        displayPost(postTitle, postContent);
-
         // Save posts after adding a new post
-        savePosts();
+        savePost({ title: postTitle, content: postContent, replies: [] });
 
         postForm.reset();
     });
@@ -170,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             replyHeaders.forEach(header => {
                 header.textContent = header.textContent.replace(/Reply from .*: /, `Reply from ${username}: `);
             });
-            savePosts();
+            // Save posts
         }
     });
 
